@@ -1,4 +1,4 @@
-# Laravel 10 透過多個 Eloquent 模型進行搜尋
+# Laravel 11 透過多個 Eloquent 模型進行搜尋
 
 引入 protonemedia 的 laravel-cross-eloquent-search 套件來擴增透過多 Eloquent 模型進行搜尋，支持排序、分頁、範圍查詢、預載入以及搜索單一欄位或多個欄位。
 
@@ -26,5 +26,5 @@ $ php artisan migrate
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/9MQtOoq.png)
+![](https://i.imgur.com/3sX8PHn.png)
 > 通過新增一個或多個模型來開始進行搜尋

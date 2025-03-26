@@ -11,21 +11,21 @@ class SearchController extends Controller
 {
     public function show() 
     {
-        $movie = '《星際異攻隊3》';
-        $postFirst = Post::create(['title' => '亞當術士']);
+        $movie = __('“Mobile Suit Gundam: Char\'s Counterattack”');
+        $postFirst = Post::create(['title' => __('“Mobile Suit Gundam Hathaway”')]);
         $postSecond = Post::create(['title' => $movie]);
         foreach (range(1, 10) as $i) {
-            $postFirst->comments()->create(['body' => $i . '一旦任務失敗，整個異攻隊也可能被終結']);
-            $postSecond->comments()->create(['body' => $i . '堅強地各自奔向自己最後的命運']);
+            $postFirst->comments()->create(['body' => $i . __('After Char\'s rebellion, Hathaway Noa leads an insurgency against Earth Federation, but meeting an enemy officer and a mysterious woman alters his fate.')]);
+            $postSecond->comments()->create(['body' => $i . __('Thirteen years after the war, the Neo Zeon army threatens the peace. Armed with the Nu Gundam, Amuro Ray and Federation forces take the field once more.')]);
         }
         $results = Search::add(Post::with('comments')->withCount('comments'), 'title')->search($movie);
-        echo $movie . '相關註解共' . ' ' . $results->first()->comments_count . ' ' . '筆' . PHP_EOL;
+        echo $movie . __(' :comments_count related comments.', ['comments_count' => $results->first()->comments_count]) . PHP_EOL;
         
         $videoFirst = Video::create(['title' => $movie, 'published_at' => now()->addDay()]);
         $videoSecond = Video::create(['title' => $movie]);
         $results = Search::add(Post::whereNotNull('published_at'), 'title')
             ->add(Video::whereNotNull('published_at'), 'title')
             ->search($movie);
-        echo $movie . '相關影片共' . ' ' . count($results) . ' ' . '筆' . PHP_EOL;
+        echo $movie . __(' :movies_count related movies.', ['movies_count' => count($results)]) . PHP_EOL;
     }
 }

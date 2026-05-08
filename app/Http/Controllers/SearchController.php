@@ -9,6 +9,9 @@ use ProtoneMedia\LaravelCrossEloquentSearch\Search;
 
 class SearchController extends Controller
 {
+    /**
+     * Display the specified resource.
+     */
     public function show() 
     {
         $movie = __('“Mobile Suit Gundam: Char\'s Counterattack”');
